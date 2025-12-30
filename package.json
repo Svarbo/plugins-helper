@@ -1,0 +1,14 @@
+{
+    "name": "com.kin-dza-dza.plugins-helper",
+    "version": "1.0.0",
+    "displayName": "Plugins helper",
+    "description": "Simple plugins installation tool",
+    "unity": "2022.3",
+    "dependencies": {
+    },
+    "keywords": [ "plugin", "tools" ],
+    "author": {
+        "name": "Kin-Dza-Dza Games",
+        "email": "svarob@mail.ru"
+    }
+}

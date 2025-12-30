@@ -1,0 +1,1 @@
+I wish it will help you to configure your plugins faster
