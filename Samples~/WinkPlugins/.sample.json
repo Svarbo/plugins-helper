@@ -1,0 +1,5 @@
+{
+    "displayName": "Wink plugins",
+    "description": "Contains wink projects setup config",
+    "createSeparatePackage": false
+}
