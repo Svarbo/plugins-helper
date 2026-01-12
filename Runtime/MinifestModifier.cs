@@ -15,6 +15,11 @@ namespace PluginsHelper.Runtime
         private const string Dependencies = "dependencies";
         private const string ScopedRegistries = "scopedRegistries";
 
+        private static Dictionary<PackagesDownloadPlatform, ScopedRegistryData> ScopedRegiestryDatas = new()
+        {
+            { PackagesDownloadPlatform.OpenUPM, new ScopedRegistryData("package.openupm.com", "https://package.openupm.com") }
+        };
+
         public static void AddPackagesToManifest(List<PackageInfo> packagesInfo)
         {
             try
@@ -22,6 +27,8 @@ namespace PluginsHelper.Runtime
                 string manifestJson = File.ReadAllText(ManifestPath);
                 JObject manifest = JObject.Parse(manifestJson);
                 JObject dependencies = (JObject)manifest[Dependencies];
+
+                AddScopedRegiestries(packagesInfo, ref manifest);
 
                 PackageInfo packageInfo;
                 string packageInfoName;
@@ -111,6 +118,40 @@ namespace PluginsHelper.Runtime
             }
 
             return packageStringTemplate;
+        }
+
+        private static void AddScopedRegiestries(List<PackageInfo> packagesInfo, ref JObject manifest)
+        {
+            JArray scopedRegiestries = new JArray();
+
+            JObject scopedRegiestry;
+
+            JProperty name;
+            JArray scopesArray;
+            JProperty scopes;
+            JProperty url;
+
+            foreach (var scopedRegiestryData in ScopedRegiestryDatas)
+            {
+                name = new JProperty(ManifestStringConstants.Name, scopedRegiestryData.Value.Name);
+                url = new JProperty(ManifestStringConstants.URL, scopedRegiestryData.Value.URL);
+
+                IEnumerable<PackageInfo> jArray = packagesInfo.Where(p => p.PackagesDownloadPlatform == scopedRegiestryData.Key);
+
+                scopesArray = new JArray();
+
+                foreach (PackageInfo packageInfo in jArray)
+                {
+                    scopesArray.Add(packageInfo.Name);
+                }
+
+                scopes = new JProperty(ManifestStringConstants.Scopes, scopesArray);
+
+                scopedRegiestry = new JObject(name, scopes, url);
+                scopedRegiestries.Add(scopedRegiestry);
+            }
+
+            manifest[ScopedRegistries] = scopedRegiestries;
         }
     }
 }
