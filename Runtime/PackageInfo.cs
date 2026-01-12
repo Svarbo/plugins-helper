@@ -1,6 +1,6 @@
 using System;
 
-namespace PluginsHelper
+namespace PluginsHelper.Runtime
 {
     [Serializable]
     public class PackageInfo

@@ -1,8 +1,10 @@
 #if UNITY_EDITOR
+using PluginsHelper.Runtime;
 using UnityEditor;
 using UnityEngine;
+using PackageInfo = PluginsHelper.Runtime.PackageInfo;
 
-namespace PluginsHelper
+namespace PluginsHelper.EditorTools
 {
     [CustomPropertyDrawer(typeof(PackageInfo))]
     public class PackageInfoCustomDrawer : PropertyDrawer

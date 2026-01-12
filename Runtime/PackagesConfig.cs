@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PluginsHelper
+namespace PluginsHelper.Runtime
 {
     [CreateAssetMenu(fileName = "PackagesConfig", menuName = "ScriptableObjects/PackagesConfig")]
     public class PackagesConfig : ScriptableObject

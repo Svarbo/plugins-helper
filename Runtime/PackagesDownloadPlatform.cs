@@ -1,4 +1,4 @@
-namespace PluginsHelper
+namespace PluginsHelper.Runtime
 {
     public enum PackagesDownloadPlatform
     {

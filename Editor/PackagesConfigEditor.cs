@@ -1,8 +1,9 @@
 #if UNITY_EDITOR
+using PluginsHelper.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace PluginsHelper
+namespace PluginsHelper.EditorTools
 {
     [CustomEditor(typeof(PackagesConfig))]
     public class PackagesConfigEditor : Editor

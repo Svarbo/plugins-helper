@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-namespace PluginsHelper
+namespace PluginsHelper.Runtime
 {
     public static partial class MinifestModifier
     {
