@@ -5,6 +5,7 @@
     "description": "Simple plugins installation tool",
     "unity": "2022.3",
     "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.2"
     },
     "keywords": [ "plugin", "tools" ],
     "author": {
